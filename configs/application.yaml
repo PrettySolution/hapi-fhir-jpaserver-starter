@@ -106,8 +106,8 @@ hapi:
 #    validation:
 #      requests_enabled: true
 #      responses_enabled: true
-#    binary_storage_enabled: true
-#    bulk_export_enabled: true
+    binary_storage_enabled: true
+    bulk_export_enabled: true
 #    partitioning_multitenancy_enabled:
 #    subscription:
 #      resthook_enabled: false
