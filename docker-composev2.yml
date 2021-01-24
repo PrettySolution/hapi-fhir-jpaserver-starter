@@ -1,30 +1,36 @@
 version: "3.7"
 services:
-  hapi-fhir-jpaserver-start:
+  hapi-fhir-jpaserver-startv2:
     depends_on:
       - hapi-fhir-mysql
 #    image: "hapiproject/hapi:latest"
     build: .
     restart: on-failure
     ports:
-      - "8080:8080"
+      - "8081:8080"
     volumes:
-      - hapi-data:/data/hapi
+#      - hapi-data:/data/hapi
       - ./configs/application.yaml:/data/hapi/application.yaml
     environment:
       SPRING_CONFIG_LOCATION: 'file:///data/hapi/application.yaml'
 
   hapi-fhir-mysql:
     image: mysql:5
-#    container_name: hapi-fhir-mysql
+    container_name: hapi-fhir-mysql
     restart: always
     environment:
       MYSQL_DATABASE: 'hapi'
       MYSQL_USER: 'admin'
       MYSQL_PASSWORD: 'admin'
       MYSQL_ROOT_PASSWORD: 'admin'
-    volumes:
-      - hapi-fhir-mysql:/var/lib/mysql
-volumes:
-  hapi-data:
-  hapi-fhir-mysql:
+#    volumes:
+#      - hapi-fhir-mysql:/var/lib/mysql
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8082:8080
+#volumes:
+#  hapi-data:
+#  hapi-fhir-mysql:
