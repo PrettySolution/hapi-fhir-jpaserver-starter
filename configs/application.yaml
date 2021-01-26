@@ -4,9 +4,9 @@ spring:
     username: admin
     password: admin
     driverClassName: com.mysql.jdbc.Driver
-#  jpa:
-#    properties:
-#      hibernate.dialect: org.hibernate.dialect.MySQLDialect
+  jpa:
+    properties:
+      hibernate.dialect: org.hibernate.dialect.MySQLDialect
 #      hibernate.dialect: org.hibernate.dialect.h2dialect
 #      hibernate.search.model_mapping: ca.uhn.fhir.jpa.search.lucenesearchmappingfactory
 #      hibernate.format_sql: false
@@ -94,7 +94,7 @@ hapi:
 
         home:
           name: vf-soft
-          server_address: 'https://hapi-fhir-vf-soft.airlan.cv.ua/fhir'
+          server_address: 'http://91.207.210.233:8080/fhir'
           refuse_to_fetch_third_party_urls: false
           fhir_version: R4
 
@@ -123,9 +123,9 @@ hapi:
 #        startTlsRequired:
 #        quitWait:
 #    lastn_enabled: true
-
-
 #
+#
+##
 #elasticsearch:
 #  debug:
 #    pretty_print_json_log: false
@@ -133,6 +133,6 @@ hapi:
 #  enabled: false
 #  password: SomePassword
 #  required_index_status: YELLOW
-#  rest_url: 'http://localhost:9200'
+#  rest_url: 'http://hapi-fhir-elasticsearch:9200'
 #  schema_management_strategy: CREATE
 #  username: SomeUsername
