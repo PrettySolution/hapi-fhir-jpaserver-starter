@@ -28,7 +28,11 @@ services:
 
 #  hapi-fhir-elasticsearch:
 #    image: elasticsearch:7.10.1
-
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8180:8080
 volumes:
   hapi-data:
   hapi-fhir-mysql:
