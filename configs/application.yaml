@@ -1,12 +1,14 @@
 spring:
   datasource:
-    url: 'jdbc:mysql://hapi-fhir-mysql:3306/hapi'
+#    url: 'jdbc:mysql://hapi-fhir-mysql:3306/hapi'
+    url: 'jdbc:postgresql://hapi-fhir-pg:5432/hapi'
     username: admin
     password: admin
-    driverClassName: com.mysql.jdbc.Driver
-  jpa:
-    properties:
-      hibernate.dialect: org.hibernate.dialect.MySQLDialect
+#    driverClassName: com.mysql.jdbc.Driver
+    driverClassName: org.postgresql.Driver
+#  jpa:
+#    properties:
+#      hibernate.dialect: org.hibernate.dialect.MySQLDialect
 #      hibernate.dialect: org.hibernate.dialect.h2dialect
 #      hibernate.search.model_mapping: ca.uhn.fhir.jpa.search.lucenesearchmappingfactory
 #      hibernate.format_sql: false
