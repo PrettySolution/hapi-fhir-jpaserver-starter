@@ -38,6 +38,8 @@ services:
       http_proxy:
       https_proxy:
       no_proxy:
+    ports:
+    - 5431:5432
 
   #  hapi-fhir-elasticsearch:
 #    image: elasticsearch:7.10.1
