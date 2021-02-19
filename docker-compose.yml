@@ -55,9 +55,12 @@ services:
     environment:
       PGADMIN_DEFAULT_EMAIL: vherman@vf-soft.com
       PGADMIN_DEFAULT_PASSWORD: admin
+    volumes:
+    - pgadmin-data:/var/lib/pgadmin
 
 volumes:
   hapi-data:
   hapi-fhir-mysql:
   hapi-fhir-pg:
+  pgadmin-data:
 
