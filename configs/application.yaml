@@ -96,7 +96,7 @@ hapi:
 
         home:
           name: vf-soft
-          server_address: 'http://91.207.210.233:8080/fhir'
+          server_address: 'http://91.207.210.227:8080/fhir'
           refuse_to_fetch_third_party_urls: false
           fhir_version: R4
 
