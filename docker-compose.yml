@@ -1,21 +1,66 @@
-version: "3"
+version: "3.7"
 services:
   hapi-fhir-jpaserver-start:
+#    depends_on:
+#      - hapi-fhir-mysql
+#    image: "hapiproject/hapi:latest"
     build: .
-    container_name: hapi-fhir-jpaserver-start
     restart: on-failure
     ports:
       - "8080:8080"
-  hapi-fhir-mysql:
-    image: mysql:latest
-    container_name: hapi-fhir-mysql
-    restart: always
-    environment:
-      MYSQL_DATABASE: 'hapi'
-      MYSQL_USER: 'admin'
-      MYSQL_PASSWORD: 'admin'
-      MYSQL_ROOT_PASSWORD: 'admin'
     volumes:
-      - hapi-fhir-mysql:/var/lib/mysql
+      - hapi-data:/data/hapi
+      - ./configs/application.yaml:/data/hapi/application.yaml
+    environment:
+      SPRING_CONFIG_LOCATION: 'file:///data/hapi/application.yaml'
+
+#  hapi-fhir-mysql:
+#    image: mysql:5
+##    container_name: hapi-fhir-mysql
+#    restart: always
+#    environment:
+#      MYSQL_DATABASE: 'hapi'
+#      MYSQL_USER: 'admin'
+#      MYSQL_PASSWORD: 'admin'
+#      MYSQL_ROOT_PASSWORD: 'admin'
+#    volumes:
+#      - hapi-fhir-mysql:/var/lib/mysql
+
+  hapi-fhir-pg:
+    image: postgres:10
+    restart: always
+    volumes:
+      - hapi-fhir-pg:/var/lib/postgresql/data:Z
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: hapi
+      http_proxy:
+      https_proxy:
+      no_proxy:
+    ports:
+    - 5431:5432
+
+  #  hapi-fhir-elasticsearch:
+#    image: elasticsearch:7.10.1
+#  adminer:
+#    image: adminer
+#    restart: always
+#    ports:
+#      - 8180:8080
+
+#  pgadmin:
+#    image: dpage/pgadmin4
+#    restart: always
+#    ports:
+#      - 8280:80
+#    environment:
+#      PGADMIN_DEFAULT_EMAIL: vherman@vf-soft.com
+#      PGADMIN_DEFAULT_PASSWORD: admin
+#    volumes:
+#    - pgadmin-data:/var/lib/pgadmin
+
 volumes:
-  hapi-fhir-mysql:
+  hapi-data:
+  hapi-fhir-pg:
+
